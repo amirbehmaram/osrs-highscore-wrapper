@@ -1,0 +1,34 @@
+
+/* Variables ! */
+:root {
+
+    --almond: #FFEBCF;
+    --peach:  #F1D1B5;
+    --melon: #F0B7A4;
+    --coral: #F18C8E;
+    --gray: #2A2B2A;
+}
+
+body {
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--gray);
+}
+
+.top-bar {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--melon);
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 50px;
+}
+
+.top-bar h1 {
+    position: relative;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    text-align: center;
+}
