@@ -1,0 +1,13 @@
+{
+  "name": "OSRS Highscore Wrapper",
+  "description": "Just a wrapper for the OSRS Highscore API.",
+  "image": "heroku/python",
+  "repository": "https://github.com/amirbehmaram/osrs-highscore-wrapper",
+  "keywords": ["python", "flask" ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "The secret key for the Django application.",
+      "generator": "secret"
+    }
+  }
+}
