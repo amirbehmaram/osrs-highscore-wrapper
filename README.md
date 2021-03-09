@@ -4,6 +4,16 @@ highscore API results and how unclear the results are initially.
 
 The wrapper should provide some basic endpoints to return highscore data in a more descriptive JSON format. 
 
+## Local Development
+
+This project is built using (flask)[https://flask.palletsprojects.com/en/1.1.x/]. Follow their (installation)[https://flask.palletsprojects.com/en/1.1.x/installation/#installation] guide to get things setup.
+
+To run the app locally:
+
+1) Export our app so Flask can use it: `export FLASK_APP=main.py`
+2) Activate the virtual environment with `. venv/bin/activate`
+3) Then use `flask run` to start the 
+
 ## Endpoints
 
 The endpoints will be documented as this project progresses.
@@ -19,9 +29,9 @@ __Method__: `GET`
 ### Player
 Returns all of the player's stats and rankings.
 
-__URL__: `/player:playerName`
+__URL__: `/api/v1/player?player_name=example`
 
-__URL Parameters__: `playerName` is a string representing the OSRS player you'd like to retreive information on.
+__URL Parameters__: `player_name` is a string representing the OSRS player you'd like to retreive information on.
 
 __Method__: `GET`
 
