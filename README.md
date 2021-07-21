@@ -2,7 +2,9 @@
 This idea came about after doing some reasearch on a similar project and coming across the current format of the OSRS
 highscore API results and how unclear the results are initially.
 
-The wrapper should provide some basic endpoints to return highscore data in a more descriptive JSON format. 
+The wrapper should provide some basic endpoints to return highscore data in a more descriptive JSON format.
+
+Currently this project is hosted for free on [Heroku](https://www.heroku.com/) and can be found here: https://osrs-api-wrapper.herokuapp.com/
 
 ## Local Development
 
