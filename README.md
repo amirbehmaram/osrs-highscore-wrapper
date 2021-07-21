@@ -6,7 +6,7 @@ The wrapper should provide some basic endpoints to return highscore data in a mo
 
 ## Local Development
 
-This project is built using (flask)[https://flask.palletsprojects.com/en/1.1.x/]. Follow their (installation)[https://flask.palletsprojects.com/en/1.1.x/installation/#installation] guide to get things setup.
+This project is built using [flask](https://flask.palletsprojects.com/en/1.1.x/). Follow their [installation](https://flask.palletsprojects.com/en/1.1.x/installation/#installation) guide to get things setup.
 
 To run the app locally:
 
@@ -31,7 +31,7 @@ Returns all of the player's stats and rankings.
 
 __URL__: `/api/v1/player?player_name=example`
 
-__URL Parameters__: `player_name` is a string representing the OSRS player you'd like to retreive information on.
+__URL Parameter__: `player_name` is a string representing the OSRS player you'd like to retreive information on.
 
 __Method__: `GET`
 
@@ -43,7 +43,8 @@ __Code__: `200 OK`
 
 __Example__: 
 ```json
-"data":"[
+{
+  "data":"[
   {
     "rank":"1469527",
     "level":"848",
@@ -64,6 +65,38 @@ __Example__:
   "status":200
 }
 ```
+
+#### Additional URL Parameters
+
+The `skill` parameter is an optional parameter that allows you to return a specific skill for the player.
+
+The possible values to pass to the skill parameter are in the Skills Reference section of this page. 
+
+See the example below for how we would get the woodcutting skill.
+
+__URL__: `/api/v1/player?player_name=example&skill=woodcutting`
+
+__URL Parameter__: `player_name` is a string representing the OSRS player you'd like to retreive information on.
+
+__URL Parameter__: `skill` is a string representing the skill you would like to grab from the player
+
+__Method__: `GET`
+
+##### Success Response
+
+__Condition__: playerName is a valid OSRS player name
+__Condition__: skill is a valid skill to request
+
+__Code__: `200 OK`
+
+__Example__: 
+```json 
+{
+  "data":"{ "rank": "-1", "level": "43", "experience": "51740" }",
+  "status":200
+}
+```
+
 ---
 
 ## Development

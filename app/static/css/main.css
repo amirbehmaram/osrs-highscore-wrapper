@@ -2,33 +2,162 @@
 /* Variables ! */
 :root {
 
+    /* This was my initial pallete, but like none of the colors were accessible with each other */
     --almond: #FFEBCF;
     --peach:  #F1D1B5;
     --melon: #F0B7A4;
     --coral: #F18C8E;
-    --gray: #2A2B2A;
+
+    --gray: #37323E;
+    --light-grey: #BFBDC1;
+    --prussian-blue: #172A3A;
+    --deep-green: #004346;
+    --meadow: #09BC8A;
+    --turqoise: #75DDDD;
+    --steel-teal: #508991;
+}
+
+html {
+    width: 100%;
+    margin: 0;
 }
 
 body {
-    margin: 0;
-    position: absolute;
+    max-width: 1440px;
     width: 100%;
     height: 100%;
+    margin: 0 auto;
     background-color: var(--gray);
+    position: relative;
 }
+
+main {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+footer {
+    margin-bottom: 50px;
+    width: 100%;
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid var(--meadow);
+}
+
+/* @media screen and (min-width: 676px) {
+
+} */
 
 .top-bar {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: var(--melon);
     font-size: 2rem;
     font-weight: 500;
-    margin: 50px;
+    position: relative;
+    width: 100%;
+    display: block;
 }
 
 .top-bar h1 {
     position: relative;
-    margin: 0 auto;
     width: auto;
     height: auto;
     text-align: center;
+    font-size: 5rem;
+    margin-top: 0;
+    color: var(--meadow);
+}
+
+.wrapper {
+    margin: 0 auto;
+    padding: 0px 40px;
+}
+
+.content h2 {
+    color: var(--meadow);
+    font-size: 4rem;
+
+}
+
+.content h3 {
+    color: var(--meadow);
+    font-size: 3rem;
+
+}
+
+.content h4 {
+    color: var(--meadow);
+    font-size: 2rem;
+
+}
+
+.content p {
+    font-size: 1.2rem;
+    color: var(--light-grey);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.content code {
+    background: var(--prussian-blue);
+    width: 100%;
+    display: block;
+    max-width: fit-content;
+    color: var(--meadow);
+    padding: 5px 15px;
+    font-size: 1rem;
+}
+
+.content .response-item {
+    margin-bottom: 20px;
+}
+
+.content .response-label{
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--light-grey);
+}
+.content code.response-info {
+    display: inline-block;
+    width: fit-content;
+}
+
+ul li {
+    font-size: 1.125rem;
+    margin-bottom: 5px;
+    color: var(--light-grey);
+}
+
+ul li::marker {
+    color: var(--meadow);
+}
+
+.link {
+    position: relative;
+    color: var(--turqoise);
+    text-decoration: none;
+    display: inline-block;
+    will-change: color;
+    transition: color .2s ease;
+}
+
+.link::after {
+    content: "";
+    position: absolute;
+    display: block;
+    background-color: var(--turqoise);
+    width: 50%;
+    height: 1px;
+    will-change: width;
+    will-change: background-color;
+    transition: width .2s ease, background-color .2s ease;
+}
+
+.link:hover {
+    color: var(--steel-teal);
+}
+
+.link:hover:after{
+    width: 100%;
+    background-color: var(--steel-teal);;
 }

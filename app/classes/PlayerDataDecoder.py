@@ -85,7 +85,7 @@ class PlayerDataDecoder:
     })    
     
     # Get all the info from the API corresponding to the player_name
-    def decode_player_data(self, player_data_str):
+    def decode_player_data(self, player_data_str, return_as_json = True):
 
         if (player_data_str):
 
@@ -131,4 +131,7 @@ class PlayerDataDecoder:
                 # Logger for debugging
                 #app.logger.info(skill_dict)
 
-        return json.dumps(skill_dict, indent = 4)
+        if return_as_json:
+            return json.dumps(skill_dict, indent = 4)
+        else:
+            return skill_dict

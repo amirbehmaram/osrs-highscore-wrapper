@@ -17,9 +17,15 @@ def index():
 @app.route('/api/v1/player')
 def get_player_data():
     player_name = request.args.get('player_name')
+    specific_skill = request.args.get('skill')
 
-    if player_name:
+    if player_name and not specific_skill:
         api_handler = OsrsApiHandler()
-        data = api_handler.get_player(player_name)
+        json_data = api_handler.get_player(player_name)
 
-        return data
+        return json_data
+    elif player_name and specific_skill:
+        api_handler = OsrsApiHandler()
+        json_data = api_handler.get_player_skill(player_name, specific_skill)
+
+        return json_data

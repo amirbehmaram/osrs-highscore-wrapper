@@ -1,5 +1,4 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -10,10 +9,164 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" />
     </head>
     <body>
-        <div class="top-bar">
-            <h1>OSRS Highscore Wrapper</h1>
-        </div>
-        <div class="wrapper">
-        </div>
+        <main>
+            <div class="top-bar">
+                <h1>OSRS Highscore Wrapper</h1>
+            </div>
+            <div class="wrapper">
+                <section class="content">
+                    <h2>About</h2>
+                    <p>
+                        This idea came about after doing some reasearch on a similar project and coming across the current format of the OSRS
+                        highscore API results and how unclear the results are initially. They just serve up a chunk of new line delimited hunk of
+                        text.
+                    </p>
+                    <p>This was mainly just an excuse to mess around with Flask, but it should also hopefully provide some basic endpoints to return highscore data in a more descriptive JSON format.</p>
+                    <p> Link to the <a href="https://github.com/amirbehmaram/osrs-highscore-wrapper" class="link">GitHub Project here.</a></p>
+
+                    <h2 id="endpoints">Endpoints</h2>
+                    <p>The endpoints will be documented as this project progresses.</p>
+
+                    <h3 id="home">Home</h3>
+                    <p>Base API URL. Returns a simple HTML page about the application.</p>
+
+                    <div class="response-item">
+                        <span class="response-label">URL:</span> 
+                        <code class="response-info">/</code>
+                    </div>
+                    <div class="response-item">
+                        <span class="response-label">Method:</span> 
+                        <code class="response-info">GET</code>
+                    </div>
+
+                    <h3 id="player">Player</h3>
+                    <p>Returns all of the player's stats and rankings.</p>
+
+                    <div class="response-item">
+                        <span class="response-label">URL:</span> 
+                        <code class="response-info">/api/v1/player?player_name=example</code>
+                    </div>
+                    <div class="response-item">
+                        <span class="response-label">Method:</span> 
+                        <code class="response-info">GET</code>
+                    </div>
+
+                    <h4 id="success-response">Required URL Parameters</h4>
+
+                    <p>The only required query parameter is the <code class="response-info">player_name</code> parameter. The parameter is a string representing the OSRS player you'd like to retreive information.</p>
+                    
+                    <h4 id="success-response">Success Response</h4>
+                    <p>Condition: playerName is a valid OSRS player name</p>
+                    <div class="response-item">
+                        <span class="response-label">Code:</span>
+                        <code class="response-info">200 OK</code>
+                    </div>
+
+                    <p>Example:</p>
+
+                    <pre>
+<code class="lang-json">{
+    "data":"
+    [{
+        "rank":"1469527",
+        "level":"848",
+        "xp":"2840563"
+    },
+    {
+        "rank":"1223120",
+        "level":"63",
+        "xp":"372297"
+    },
+    ...,
+    {
+        "rank":"",
+        "level":"",
+        "xp":""
+    }]",
+    "status":200
+}</code>
+                    </pre>
+
+                    <h4 id="success-response">Additional URL Parameters</h4>
+
+                    <p>
+                        The <code class="response-info">skill</code> parameter is an optional parameter that allows you to return a specific skill for the player.</p>
+                    
+                    <p>
+                        The possible values to pass to the skill parameter are in the <a href="#skills-reference" class="link">Skills Reference section</a> of this page. See 
+                        the example below for how we would get the woodcutting skill.
+                    </p>
+
+                    <div class="response-item">
+                        <span class="response-label">URL:</span> 
+                        <code class="response-info">/api/v1/player?player_name=example&skill=woodcutting</code>
+                    </div>
+
+                    <div class="response-item">
+                        <span class="response-label">Method:</span> 
+                        <code class="response-info">GET</code>
+                    </div>
+
+                    <h4 id="success-response">Success Response</h4>
+                    <p>Condition: playerName is a valid OSRS player name</p>
+                    <p>Condition: skillis a string representing the skill you would like to grab from the player</p>
+                    <div class="response-item">
+                        <span class="response-label">Code:</span>
+                        <code class="response-info">200 OK</code>
+                    </div>
+
+                    <p>Example:</p>
+
+                    <pre>
+<code class="lang-json">{
+    "data":"{ "rank": "-1", "level": "43", "experience": "51740" }",
+    "status":200
+}</code>
+                    </pre>
+
+                    <h3 id="skills-reference">Skills Reference</h3>
+                    <p>Just for reference, this is the order that skills are received from the official OSRS API.</p>
+                    <ul>
+                        <li>overall: { rank: "", level: "", experience: "" }</li>
+                        <li>attack: { rank: "", level: "", experience: "" }</li>
+                        <li>defence: { rank: "", level: "", experience: "" }</li>
+                        <li>strength: { rank: "", level: "", experience: "" }</li>
+                        <li>hitpoints: { rank: "", level: "", experience: "" }</li>
+                        <li>ranged: { rank: "", level: "", experience: "" }</li>
+                        <li>prayer: { rank: "", level: "", experience: "" }</li>
+                        <li>magic: { rank: "", level: "", experience: "" }</li>
+                        <li>cooking: { rank: "", level: "", experience: "" }</li>
+                        <li>woodcutting: { rank: "", level: "", experience: "" }</li>
+                        <li>fletching: { rank: "", level: "", experience: "" }</li>
+                        <li>fishing: { rank: "", level: "", experience: "" }</li>
+                        <li>firemaking: { rank: "", level: "", experience: "" }</li>
+                        <li>crafting: { rank: "", level: "", experience: "" }</li>
+                        <li>smithing: { rank: "", level: "", experience: "" }</li>
+                        <li>mining: { rank: "", level: "", experience: "" }</li>
+                        <li>herblore: { rank: "", level: "", experience: "" }</li>
+                        <li>agility: { rank: "", level: "", experience: "" }</li>
+                        <li>thieving: { rank: "", level: "", experience: "" }</li>
+                        <li>slayer: { rank: "", level: "", experience: "" }</li>
+                        <li>farming: { rank: "", level: "", experience: "" }</li>
+                        <li>runecrafting: { rank: "", level: "", experience: "" }</li>
+                        <li>hunter: { rank: "", level: "", experience: "" }</li>
+                        <li>construction: { rank: "", level: "", experience: "" }</li>
+                        <li>easyClueScrolls: { rank: "", score: "" }</li>
+                        <li>mediumClueScrolls: { rank: "", score: "" }</li>
+                        <li>clueScrolls: { rank: "", score: "" }</li>
+                        <li>bountyHunter: { rank: "", score: "" }</li>
+                        <li>bountyHunterRogues: { rank: "", score: "" }</li>
+                        <li>hardClueScrolls: { rank: "", score: "" }</li>
+                        <li>lastManStanding: { rank: "", score: "" }</li>
+                        <li>eliteClueScrolls: { rank: "", score: "" }</li>
+                        <li>masterClueScrolls: { rank: "", score: "" }</li>
+                    </ul>
+                </section>
+
+            </div>
+        </main>
+        <footer>
+            <a href="https://amirbehmaram.dev/" class="link">Created by Amir.</a>
+        </footer>
     </body>
 </html>

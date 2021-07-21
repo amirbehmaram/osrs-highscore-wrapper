@@ -1,5 +1,6 @@
 # Regular imports
 import requests
+import json
 
 # Custom classes importing
 from .PlayerDataDecoder import PlayerDataDecoder
@@ -20,8 +21,20 @@ class OsrsApiHandler:
         if player_request:
             decoder = PlayerDataDecoder()
             return decoder.decode_player_data(player_request.text)
-        else :
-            return 'Error with request!'
+        else:
+            return json.dumps('Error with request!', indent = 4)
+
+    # Get all the info from the API corresponding to the player_name
+    def get_player_skill(self, player_name, skill):
+
+        player_request = requests.get(self.base_url + '?player=' + player_name)
+
+        if player_request:
+            decoder = PlayerDataDecoder()
+            player_data = decoder.decode_player_data(player_request.text, False)
+            return json.dumps(player_data[skill], indent = 4)
+        else:
+            return json.dumps('Error with request!', indent = 4)
 
 
     
